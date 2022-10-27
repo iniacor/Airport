@@ -26,17 +26,8 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /.(jpg|png)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 8192,
-                name: '[name].[ext]',
-                outputPath: 'images',
-              },
-            },
-          ],
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
         },
       ],
     },

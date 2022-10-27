@@ -1,12 +1,18 @@
-import { createReducer, createAction } from '@reduxjs/toolkit';
+import { SHOW_FLIGHTS_LIST } from './flight.actions';
 
 const initialState = {
-  flightList: [],
+  flightsList: null,
 };
 
-export const getDepartureList = createAction('GET_DEPARTURE_LIST');
-export const getArrivalList = createAction('GET_arrival_LIST');
-export default createReducer(initialState, {
-  [getDepartureList]: state => {},
-  [getArrivalList]: state => {},
-});
+export const flightsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SHOW_FLIGHTS_LIST:
+      return {
+        ...state,
+        flightsList: action.payload.flightsData,
+      };
+    default:
+      return state;
+  }
+};
+export default flightsReducer;

@@ -1,10 +1,12 @@
 import React from 'react';
+import './header.scss';
+import Logo from '../../../../icons/Logo.svg';
 
 const Header = () => {
   return (
     <header className="header">
       <a className="logo-link">
-        <img src="./logo.png" alt="header logo" />
+        <Logo className={'logo-link__img'} />
       </a>
     </header>
   );

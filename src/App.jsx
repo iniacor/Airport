@@ -1,13 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
-import Header from './features/flights/components/Header';
-import SearchFlightField from './features/flights/components/SearchFlightField';
+import { BrowserRouter } from 'react-router-dom';
+import AirportBoard from './features/flights/components/airportBoard/AirportBoard';
 
 const App = () => (
   <Provider store={store}>
-    <Header />
-    {/* <SearchFlightField /> */}
+    <BrowserRouter>
+      <AirportBoard />
+    </BrowserRouter>
   </Provider>
 );
 

@@ -1,0 +1,181 @@
+.flightboard {
+  width: 1120px;
+  font-size: 18px;
+
+  &__nav {
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 60px 60px 0 0;
+    text-transform: uppercase;
+    color: #fff;
+    background: #73d2f0;
+    text-decoration: none;
+    cursor: pointer;
+
+    & i {
+      margin-right: 15px;
+      font-size: 40px;
+    }
+
+    &_active {
+      color: #1eb7ee;
+      background: #fff;
+      z-index: 1;
+    }
+
+    &:not(.flightboard__link_active):hover {
+      background: #1eb7ee;
+    }
+
+    &_departures {
+      padding-right: 150px;
+      margin-right: -60px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &_arrivals {
+      padding-left: 150px;
+      margin-left: -60px;
+    }
+  }
+  &__calendar {
+    display: flex;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    align-items: center;
+    background-color: #fff;
+  }
+
+  &__calendar-dates {
+    display: flex;
+    margin-left: 30px;
+    padding-top: 4px;
+    width: 300px;
+    height: 62px;
+    text-align: center;
+  }
+
+  &__calendar-date {
+    position: relative;
+    margin-left: 20px;
+    width: 40px;
+    color: #1eb7ee;
+    text-align: center;
+    & label {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+
+.flights-table {
+  background-color: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head {
+    color: #808080;
+  }
+
+  &__head-row {
+    height: 50px;
+    color: #b8b9b9;
+    font-weight: 400;
+  }
+
+  &__body-row {
+    &:nth-of-type(odd) {
+      background-color: #0066871a;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      box-shadow: 1px 20px 36px -7px #00000057;
+    }
+  }
+
+  td {
+    padding: 16px 10px;
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+.nothing-found {
+  height: 300px;
+  line-height: 300px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  background-color: #fff;
+}
+
+.flightboard__calendar-date .calendar-ico i {
+  font-size: 32px;
+  padding: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: #1eb7ee;
+  color: #fff;
+  cursor: pointer;
+}
+
+.flightboard__calendar-date .calendar-ico input {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 42px;
+  height: 48px;
+  opacity: 0;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.fa-calendar-alt:before,
+.fa-calendar-days:before {
+  content: '\f073';
+}
+
+.dates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 60px;
+  width: 300px;
+  margin-left: 20px;
+}
+
+.date {
+  padding-bottom: 5px;
+  flex: 1;
+  color: #b8b9b9;
+  border-bottom: 3px solid #d0d0d0;
+  cursor: pointer;
+  &__num {
+    font-size: 12px;
+    margin-bottom: 7px;
+  }
+  &__title {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+.active {
+  color: #1eb7ee;
+  border-bottom: 3px solid #1eb7ee;
+  transition: 0.5s;
+}

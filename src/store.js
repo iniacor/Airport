@@ -1,25 +1,23 @@
-/* eslint-disable no-underscore-dangle */
-// import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
-// import thunk from 'redux-thunk';
-// import flightsReducer from './features/flights/flight.reducer';
+// import { configureStore } from '@reduxjs/toolkit';
+// import flightsReducer from './features/flights/flightsSlice';
 
-// const reducer = combineReducers({
-//   flights: flightsReducer,
+// const store = configureStore({
+//   reducer: {
+//     flights: flightsReducer,
+//   },
 // });
-
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-// const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
 // export default store;
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import flightsReducer from './features/flights/flightsReduser';
 
-const mainReduser = combineReducers({
+const reducer = combineReducers({
   flights: flightsReducer,
 });
 
-const store = configureStore({
-  reducer: mainReduser,
-});
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+
 export default store;

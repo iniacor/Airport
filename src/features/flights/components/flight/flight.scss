@@ -1,0 +1,28 @@
+.logo-company {
+  display: flex;
+  align-items: center;
+
+  & img {
+    height: 30px;
+    margin-right: 15px;
+  }
+}
+
+.terminal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 50%;
+  border: 1px solid #63c745;
+  color: #63c745;
+
+  &.blue {
+    border-color: deepskyblue;
+    color: deepskyblue;
+  }
+}

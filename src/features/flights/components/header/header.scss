@@ -1,0 +1,14 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 99;
+  background: #1eb7ee;
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(37, 40, 41, 0.3);
+}
+
+.logo-link__img {
+  margin: 5px 50px;
+}
