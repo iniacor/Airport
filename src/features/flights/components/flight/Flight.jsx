@@ -27,7 +27,7 @@ const Flight = props => {
       <td>
         <span>{`${fltNo}`}</span>
       </td>
-      <td className="flight-details">
+      <td>
         <span>Flight details</span>
       </td>
     </tr>

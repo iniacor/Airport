@@ -74,6 +74,29 @@
       font-size: 12px;
       font-weight: 700;
     }
+    .calendar-ico {
+      padding: 4px;
+      width: 40px;
+      height: 40px;
+      background-color: #1eb7ee;
+      color: #fff;
+
+      i {
+        font-size: 32px;
+        cursor: pointer;
+      }
+
+      input {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 42px;
+        height: 48px;
+        opacity: 0;
+        font-size: 32px;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -111,36 +134,24 @@
     text-align: center;
     font-size: 18px;
   }
-}
 
-.nothing-found {
-  height: 300px;
-  line-height: 300px;
-  text-align: center;
-  font-size: 50px;
-  font-weight: 700;
-  background-color: #fff;
-}
+  td:last-child {
+    opacity: 0;
+    color: #1eb7ee;
 
-.flightboard__calendar-date .calendar-ico i {
-  font-size: 32px;
-  padding: 4px;
-  width: 40px;
-  height: 40px;
-  background-color: #1eb7ee;
-  color: #fff;
-  cursor: pointer;
-}
+    &:hover {
+      opacity: 1;
+    }
 
-.flightboard__calendar-date .calendar-ico input {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 42px;
-  height: 48px;
-  opacity: 0;
-  font-size: 32px;
-  cursor: pointer;
+    span {
+      text-decoration: underline;
+    }
+
+    span:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
 }
 
 .fa-calendar-alt:before,

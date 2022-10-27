@@ -1,7 +1,12 @@
 import React from 'react';
+import './search-nothing-found.scss';
 
-const NotFound = () => {
-  return <h2>No Flight</h2>;
+const NotFoundPage = () => {
+  return (
+    <div className="nothing-found-msg">
+      <span>There is No Flight</span>
+    </div>
+  );
 };
 
-export default NotFound;
+export default NotFoundPage;

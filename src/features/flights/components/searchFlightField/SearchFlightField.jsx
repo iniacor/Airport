@@ -8,8 +8,6 @@ const SearchFlightField = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location);
-
   const onChange = event => {
     setValue(event.target.value);
   };
