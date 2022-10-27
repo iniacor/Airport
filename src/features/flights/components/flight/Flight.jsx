@@ -4,14 +4,13 @@ import './flight.scss';
 
 const Flight = props => {
   const { term, fltNo, status, name, logoUrl, airportName, localTime } = props;
-  const timetable = moment(localTime).format('HH:mm');
 
   return (
     <tr className="table__body-row">
       <td>
         <span className={term === 'D' ? 'terminal blue' : 'terminal'}>{term}</span>
       </td>
-      <td>{timetable}</td>
+      <td>{localTime}</td>
       <td>
         <span>{airportName}</span>
       </td>

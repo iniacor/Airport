@@ -15,7 +15,7 @@ const FlightsList = ({
   pathname,
   status,
 }) => {
-  const date = moment(calendarDate).format('YYYY-MM-DD');
+  const date = moment(calendarDate).format('DD-MM-YYYY');
 
   const extractDataList = (flightsList, flightDirection) => {
     return flightsList.map(flight => {
@@ -23,7 +23,7 @@ const FlightsList = ({
         term: flight.term,
         fltNo: `${flight['carrierID.IATA']}${flight.fltNo}`,
         airportName: flight['airportToID.name_en'] || flight['airportFromID.name_en'],
-        localTime: flight.timeDepSchedule,
+        localTime: moment(flight.timeDepShedule).format('HH:mm'),
         timeStatus: flight.timeTakeOfFact,
         status: `Departed at ${moment(flight.timeTakeofFact).format('HH:mm')}`,
         name: flight.airline.en.name,
@@ -34,7 +34,7 @@ const FlightsList = ({
           ...flightData,
           status: `Landed at ${moment(flight.timeStandFact).format('HH:mm')}`,
           timeStatus: flight.timeLandFact,
-          localTime: flight.timeToStand,
+          localTime: moment(flight.timeStandCalc).format('HH:mm'),
         };
       }
       return <Flight key={flight.ID} {...flightData} />;
@@ -46,14 +46,11 @@ const FlightsList = ({
   }, [date]);
 
   if (!flights) {
-    return null;
+    return [];
   }
   const { body } = flights;
   const path = pathname.slice(1, -1);
-
-  // if (!body[`${path}`].length) {
-  //   return null;
-  // }
+  console.log(flights);
 
   const filterFlightsList = (flightsList, searchText) => {
     if (!searchText) return flightsList;
@@ -70,6 +67,10 @@ const FlightsList = ({
   };
 
   const flightsForRender = filterFlightsList(body[`${path}`], searchText);
+
+  // if (flightsForRender.length === 0) {
+  //   return <div className="nothing-found">Nothing Found</div>;
+  // }
 
   return <>{flightsForRender.length !== 0 ? extractDataList(flightsForRender, status) : null}</>;
 };

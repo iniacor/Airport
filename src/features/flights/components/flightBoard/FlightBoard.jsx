@@ -14,9 +14,9 @@ const FlightBoard = () => {
   const currentDay = moment(Date.now()).format('DD/MM');
   const nextDay = moment(Date.now()).add(1, 'day').format('DD/MM');
   const prevDay = moment(Date.now()).subtract(1, 'day').format('DD/MM');
-  const yesterday = moment(Date.now()).subtract(1, 'day').format('YYYY-MM-DD');
-  const today = moment(Date.now()).format('YYYY-MM-DD');
-  const tomorrow = moment(Date.now()).add(1, 'day').format('YYYY-MM-DD');
+  const yesterday = moment(Date.now()).subtract(1, 'day').format('DD-MM-YYYY');
+  const today = moment(Date.now()).format('DD-MM-YYYY');
+  const tomorrow = moment(Date.now()).add(1, 'day').format('DD-MM-YYYY');
 
   const searchText = searchParams.get('search') || '';
   const date = searchParams.get('date') || '';
