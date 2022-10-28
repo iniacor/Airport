@@ -9,10 +9,8 @@ const AirportBoard = () => {
     <>
       <Header />
       <main className="search-flight">
-        <div className="search-page">
-          <SearchFlightField />
-          <FlightBoard />
-        </div>
+        <SearchFlightField />
+        <FlightBoard />
       </main>
     </>
   );

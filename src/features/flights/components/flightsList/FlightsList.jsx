@@ -5,7 +5,6 @@ import * as flightsActions from '../../flight.actions';
 import { flightsListSelector } from '../../flight.selectors';
 import './flights-list.scss';
 import Flight from '../flight/Flight';
-import NotFoundPage from '../notfound/NotFoundPage';
 
 const FlightsList = ({
   flightDataFetching,
@@ -50,7 +49,6 @@ const FlightsList = ({
   }
   const { body } = flights;
   const path = pathname.slice(1, -1);
-  console.log(flights);
 
   const filterFlightsList = (flightsList, searchText) => {
     if (!searchText) return flightsList;
@@ -68,11 +66,26 @@ const FlightsList = ({
 
   const flightsForRender = filterFlightsList(body[`${path}`], searchText);
 
-  // if (flightsForRender.length === 0) {
-  //   return <div className="nothing-found">Nothing Found</div>;
-  // }
-
-  return <>{flightsForRender.length !== 0 ? extractDataList(flightsForRender, status) : null}</>;
+  if (flightsForRender.length === 0) {
+    return <div className="nothing-found-msg">No Flight</div>;
+  }
+  return (
+    <div className="search-result__content">
+      <table className="table">
+        <thead className="table__head">
+          <tr className="table__head-row">
+            <th>Terminal</th>
+            <th>Local time</th>
+            <th>Destination</th>
+            <th>Status</th>
+            <th>Airline</th>
+            <th>Flight</th>
+          </tr>
+        </thead>
+        <tbody>{extractDataList(flightsForRender, status)}</tbody>
+      </table>
+    </div>
+  );
 };
 
 const mapState = state => {

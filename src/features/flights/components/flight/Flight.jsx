@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import './flight.scss';
 
 const Flight = props => {

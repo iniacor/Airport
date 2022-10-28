@@ -14,9 +14,9 @@ const FlightBoard = () => {
   const currentDay = moment(Date.now()).format('DD/MM');
   const nextDay = moment(Date.now()).add(1, 'day').format('DD/MM');
   const prevDay = moment(Date.now()).subtract(1, 'day').format('DD/MM');
-  const yesterday = moment(Date.now()).subtract(1, 'day').format('DD-MM-YYYY');
-  const today = moment(Date.now()).format('DD-MM-YYYY');
-  const tomorrow = moment(Date.now()).add(1, 'day').format('DD-MM-YYYY');
+  const yesterday = moment(Date.now()).subtract(1, 'day').format('YYYY-MM-DD');
+  const today = moment(Date.now()).format('YYYY-MM-DD');
+  const tomorrow = moment(Date.now()).add(1, 'day').format('YYYY-MM-DD');
 
   const searchText = searchParams.get('search') || '';
   const date = searchParams.get('date') || '';
@@ -110,36 +110,20 @@ const FlightBoard = () => {
           </div>
         </div>
       </div>
-      <div className="flights-table">
-        <table className="table">
-          <thead className="table__head">
-            <tr className="table__head-row">
-              <th>Terminal</th>
-              <th>Local time</th>
-              <th>Destination</th>
-              <th>Status</th>
-              <th>Airline</th>
-              <th>Flight</th>
-            </tr>
-          </thead>
-          <tbody className="table__body">
-            <Routes>
-              <Route path="/" element={<Navigate to={`departures${location.search}`} replace />} />
-              <Route
-                path={location.pathname}
-                element={
-                  <FlightsList
-                    calendarDate={date}
-                    searchText={searchText}
-                    pathname={location.pathname}
-                    status={status}
-                  />
-                }
-              />
-            </Routes>
-          </tbody>
-        </table>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to={`departures${location.search}`} replace />} />
+        <Route
+          path={location.pathname}
+          element={
+            <FlightsList
+              calendarDate={date}
+              searchText={searchText}
+              pathname={location.pathname}
+              status={status}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 };
