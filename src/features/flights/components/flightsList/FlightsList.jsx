@@ -70,7 +70,7 @@ const FlightsList = ({
     return <div className="nothing-found-msg">No Flight</div>;
   }
   return (
-    <div className="search-result__content">
+    <div className="flights-table">
       <table className="table">
         <thead className="table__head">
           <tr className="table__head-row">
@@ -80,6 +80,7 @@ const FlightsList = ({
             <th>Status</th>
             <th>Airline</th>
             <th>Flight</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>{extractDataList(flightsForRender, status)}</tbody>
