@@ -101,69 +101,12 @@
   }
 }
 
-.flights-table {
-  background-color: #fff;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-
-  &__head {
-    color: #b8b9b9;
-  }
-
-  &__head-row {
-    height: 50px;
-    font-weight: 400;
-    th {
-      padding: 16px 10px;
-      text-align: center;
-    }
-  }
-
-  &__body-row {
-    &:nth-of-type(odd) {
-      background-color: #0066871a;
-      transition: 0.3s;
-    }
-
-    &:hover {
-      box-shadow: 1px 20px 36px -7px #00000057;
-    }
-  }
-
-  td {
-    padding: 16px 10px;
-    text-align: center;
-    font-size: 18px;
-  }
-
-  td:last-child {
-    opacity: 0;
-    color: #1eb7ee;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    span {
-      text-decoration: underline;
-    }
-
-    span:hover {
-      text-decoration: none;
-      cursor: pointer;
-    }
-  }
-}
-
 .fa-calendar-alt:before,
 .fa-calendar-days:before {
   content: '\f073';
 }
 
-.dates {
+.three-days {
   display: flex;
   justify-content: space-between;
   align-items: center;

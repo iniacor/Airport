@@ -83,7 +83,7 @@ const FlightBoard = () => {
             </form>
           </div>
         </div>
-        <div className="dates">
+        <div className="three-days">
           <div
             className={date === yesterday ? 'date active' : 'date'}
             onClick={onDayPicker}

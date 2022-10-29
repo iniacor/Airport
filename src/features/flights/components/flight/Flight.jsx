@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './flight.scss';
 
 const Flight = props => {
@@ -30,6 +31,16 @@ const Flight = props => {
       </td>
     </tr>
   );
+};
+
+Flight.propTypes = {
+  term: PropTypes.string.isRequired,
+  fltNo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  logoUrl: PropTypes.string.isRequired,
+  airportName: PropTypes.string.isRequired,
+  localTime: PropTypes.string.isRequired,
 };
 
 export default Flight;

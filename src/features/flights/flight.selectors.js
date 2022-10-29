@@ -1,3 +1,3 @@
-export const flightsListSelector = state => {
-  return state.flights.flightsList;
-};
+// export const flightsListSelector = state => {
+//   return state.flights.flightsList;
+// };

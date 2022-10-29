@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import * as flightsActions from '../../flight.actions';
-import { flightsListSelector } from '../../flight.selectors';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchFlightsList } from '../../flightsSlice';
 import './flights-list.scss';
 import Flight from '../flight/Flight';
 
-const FlightsList = ({
-  flightDataFetching,
-  flights,
-  calendarDate,
-  searchText,
-  pathname,
-  status,
-}) => {
+const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   const date = moment(calendarDate).format('DD-MM-YYYY');
+  const { flightsList, fetchStatus, error } = useSelector(state => state.flights);
+  const dispatch = useDispatch();
 
   const extractDataList = (flightsList, flightDirection) => {
     return flightsList.map(flight => {
@@ -41,18 +36,27 @@ const FlightsList = ({
   };
 
   useEffect(() => {
-    flightDataFetching(date);
+    dispatch(fetchFlightsList(date));
   }, [date]);
 
-  if (!flights) {
+  if (!flightsList) {
     return [];
   }
-  const { body } = flights;
+  const { body } = flightsList;
   const path = pathname.slice(1, -1);
 
+  function getUniqueFlightsList(arr) {
+    const result = arr.reduce(
+      (acc, el) => (acc.find(({ fltNo }) => el.fltNo == fltNo) || acc.push(el), acc),
+      [],
+    );
+    return result;
+  }
+
   const filterFlightsList = (flightsList, searchText) => {
-    if (!searchText) return flightsList;
-    return flightsList.filter(flight => {
+    if (!searchText) return getUniqueFlightsList(flightsList);
+
+    const searchFilterList = flightsList.filter(flight => {
       const fltNo = `${flight['carrierID.IATA']}${flight.fltNo}`;
       const airportName = `${flight['airportToID.name_en']} || ${flight['airportFromID.name_en']}`;
       const airlineName = `${flight.airline.en.name}`;
@@ -62,6 +66,7 @@ const FlightsList = ({
         airlineName.toLowerCase().includes(searchText.toLowerCase())
       );
     });
+    return getUniqueFlightsList(searchFilterList);
   };
 
   const flightsForRender = filterFlightsList(body[`${path}`], searchText);
@@ -71,6 +76,8 @@ const FlightsList = ({
   }
   return (
     <div className="flights-table">
+      {fetchStatus === 'loading' && <span className="spinner"></span>}
+      {error && <div className="error-msg">An error ocured: {error}</div>}
       <table className="table">
         <thead className="table__head">
           <tr className="table__head-row">
@@ -89,14 +96,16 @@ const FlightsList = ({
   );
 };
 
-const mapState = state => {
-  return {
-    flights: flightsListSelector(state),
-  };
+FlightsList.propTypes = {
+  flightsList: PropTypes.object,
+  searchText: PropTypes.string.isRequired,
+  pathname: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  calendarDate: PropTypes.string.isRequired,
 };
 
-const mapDispatch = {
-  flightDataFetching: flightsActions.fetchFlightsList,
+FlightsList.defaultProps = {
+  flightsList: null,
 };
 
-export default connect(mapState, mapDispatch)(FlightsList);
+export default FlightsList;

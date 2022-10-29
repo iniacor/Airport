@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import Header from '../header/Header';
 import SearchFlightField from '../searchFlightField/SearchFlightField';
 import FlightBoard from '../flightBoard/FlightBoard';
-import './search-flight.scss';
+import './search-page.scss';
 
-const AirportBoard = () => {
+const SearchPage = () => {
   return (
     <>
       <Header />
-      <main className="search-flight">
+      <main className="search-page">
         <SearchFlightField />
         <FlightBoard />
       </main>
@@ -16,4 +16,4 @@ const AirportBoard = () => {
   );
 };
 
-export default AirportBoard;
+export default SearchPage;
