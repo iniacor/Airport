@@ -7,18 +7,19 @@ import './flights-list.scss';
 import Flight from '../flight/Flight';
 
 const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
-  const date = moment(calendarDate).format('DD-MM-YYYY');
+  const currentSearchDate = new Date(calendarDate).getDate();
+
   const { flightsList, fetchStatus, error } = useSelector(state => state.flights);
   const dispatch = useDispatch();
+  console.log(flightsList);
 
-  const extractDataList = (flightsList, flightDirection) => {
+  const extractFlightsList = (flightsList, flightDirection) => {
     return flightsList.map(flight => {
       let flightData = {
         term: flight.term,
         fltNo: `${flight['carrierID.IATA']}${flight.fltNo}`,
         airportName: flight['airportToID.name_en'] || flight['airportFromID.name_en'],
         localTime: moment(flight.timeDepShedule).format('HH:mm'),
-        timeStatus: flight.timeTakeOfFact,
         status: `Departed at ${moment(flight.timeTakeofFact).format('HH:mm')}`,
         name: flight.airline.en.name,
         logoUrl: flight.airline.en.logoSmallName,
@@ -27,7 +28,6 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
         flightData = {
           ...flightData,
           status: `Landed at ${moment(flight.timeStandFact).format('HH:mm')}`,
-          timeStatus: flight.timeLandFact,
           localTime: moment(flight.timeStandCalc).format('HH:mm'),
         };
       }
@@ -36,8 +36,8 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   };
 
   useEffect(() => {
-    dispatch(fetchFlightsList(date));
-  }, [date]);
+    dispatch(fetchFlightsList(calendarDate));
+  }, [calendarDate]);
 
   if (!flightsList) {
     return [];
@@ -45,13 +45,20 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   const { body } = flightsList;
   const path = pathname.slice(1, -1);
 
-  function getUniqueFlightsList(arr) {
-    const result = arr.reduce(
-      (acc, el) => (acc.find(({ fltNo }) => el.fltNo == fltNo) || acc.push(el), acc),
+  const getUniqueFlightsList = arr => {
+    const withoutDuplicates = arr.reduce(
+      (acc, el) => (acc.find(({ fltNo }) => el.fltNo === fltNo) || acc.push(el), acc),
       [],
     );
-    return result;
-  }
+
+    const choseCorrectDate = withoutDuplicates.filter(
+      curentDate =>
+        new Date(curentDate.timeTakeofFact || curentDate.timeStandFact).getDate() ===
+        currentSearchDate,
+    );
+    console.log(choseCorrectDate);
+    return choseCorrectDate;
+  };
 
   const filterFlightsList = (flightsList, searchText) => {
     if (!searchText) return getUniqueFlightsList(flightsList);
@@ -90,7 +97,7 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
             <th></th>
           </tr>
         </thead>
-        <tbody>{extractDataList(flightsForRender, status)}</tbody>
+        <tbody>{extractFlightsList(flightsForRender, status)}</tbody>
       </table>
     </div>
   );
