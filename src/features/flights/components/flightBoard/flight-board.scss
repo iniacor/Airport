@@ -1,52 +1,6 @@
+@import '../../../../styles/vars.scss';
+
 .flightboard {
-  width: 1120px;
-  font-size: 18px;
-
-  &__nav {
-    display: flex;
-  }
-
-  &__link {
-    display: flex;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 600;
-    border-radius: 60px 60px 0 0;
-    text-transform: uppercase;
-    color: #fff;
-    background: #73d2f0;
-    text-decoration: none;
-    cursor: pointer;
-
-    & i {
-      margin-right: 15px;
-      font-size: 40px;
-    }
-
-    &_active {
-      color: #1eb7ee;
-      background: #fff;
-      z-index: 1;
-    }
-
-    &:not(.flightboard__link_active):hover {
-      background: #1eb7ee;
-    }
-
-    &_departures {
-      padding-right: 150px;
-      margin-right: -60px;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    &_arrivals {
-      padding-left: 150px;
-      margin-left: -60px;
-    }
-  }
   &__calendar {
     display: flex;
     padding-top: 25px;
@@ -101,9 +55,49 @@
   }
 }
 
-.fa-calendar-alt:before,
-.fa-calendar-days:before {
-  content: '\f073';
+// switcher style start
+.type-switchers {
+  display: flex;
+  margin: 35px auto 0;
+  color: $white-color;
+
+  &__link {
+    flex: 1;
+    height: 60px;
+    border-radius: 60px 60px 0 0;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background-color: $blue-color;
+    color: $white-color;
+    overflow: hidden;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: $dark-blue-color;
+    }
+
+    &_arrivals {
+      margin-left: -100px;
+    }
+  }
+
+  &__link-icon {
+    transform: translate(-15px, 11px);
+  }
+}
+
+.active {
+  z-index: 1;
+  background-color: $white-color;
+  color: $dark-blue-color;
+
+  &:hover {
+    background-color: $white-color;
+  }
 }
 
 .three-days {
@@ -122,6 +116,11 @@
   color: #b8b9b9;
   border-bottom: 3px solid #d0d0d0;
   cursor: pointer;
+  &_active {
+    color: #1eb7ee;
+    border-bottom: 3px solid #1eb7ee;
+    transition: 0.5s;
+  }
   &__num {
     font-size: 12px;
     margin-bottom: 7px;
@@ -131,9 +130,4 @@
     text-transform: uppercase;
     font-weight: 700;
   }
-}
-.active {
-  color: #1eb7ee;
-  border-bottom: 3px solid #1eb7ee;
-  transition: 0.5s;
 }

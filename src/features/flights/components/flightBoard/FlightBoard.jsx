@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, Link, Navigate, useLocation, useSearchParams } from 'react-router-dom';
+import { Route, Routes, NavLink, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import moment from 'moment/moment';
 import FlightsList from '../flightsList/FlightsList';
+import Departure from '../../../../icons/Departure.svg';
+import Arrivals from '../../../../icons/Arrivals.svg';
 import './flight-board.scss';
 
 const FlightBoard = () => {
@@ -51,22 +53,25 @@ const FlightBoard = () => {
 
   return (
     <div className="flightboard">
-      <div className="flightboard__nav">
-        <Link
+      <div className="type-switchers">
+        <NavLink
           to={`/departures${location.search}`}
-          className={`flightboard__link flightboard__link_departures ${departureClass}`}
+          className="type-switchers__link"
+          activeClassName="active"
         >
-          <i className="fas fa-plane-departure"></i>
+          <Departure className="type-switchers__link-icon" />
           Departures
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to={`/arrivals${location.search}`}
-          className={`flightboard__link flightboard__link_arrivals ${arrivalClass}`}
+          className="type-switchers__link type-switchers__link_arrivals"
+          activeClassName="active"
         >
-          <i className="fas fa-plane-arrival"></i>
+          <Arrivals className="type-switchers__link-icon" />
           Arrivals
-        </Link>
+        </NavLink>
       </div>
+
       <div className="flightboard__calendar">
         <div className="flightboard__calendar-date">
           <label htmlFor="search-date">{searchCalendarDate}</label>
@@ -85,7 +90,7 @@ const FlightBoard = () => {
         </div>
         <div className="three-days">
           <div
-            className={date === yesterday ? 'date active' : 'date'}
+            className={date === yesterday ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={yesterday}
           >
@@ -93,7 +98,7 @@ const FlightBoard = () => {
             <div className="date__title">Yesterday</div>
           </div>
           <div
-            className={date === today ? 'date active' : 'date'}
+            className={date === today ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={today}
           >
@@ -101,7 +106,7 @@ const FlightBoard = () => {
             <div className="date__title">Today</div>
           </div>
           <div
-            className={date === tomorrow ? 'date active' : 'date'}
+            className={date === tomorrow ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={tomorrow}
           >
