@@ -1,12 +1,14 @@
-# ✈️Airport search board project
+# ✈️ Airport search board project
 
 ### _React-powered application for visualisation flights data_
 
-## ✨Features
+### Application available via [link](https://unrivaled-quokka-7e8f73.netlify.app) 👈🏻
+
+## ✨ Features
 
 - Search flight by airline, destionation or flight code
 
-## ⚙️Used technologies:
+## ⚙️ Used technologies:
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
@@ -43,6 +45,5 @@ Airport board requires [NodeJS](https://nodejs.org/) v16+ to build
 
 <hr/>
 
-### Application available via [link](https://unrivaled-quokka-7e8f73.netlify.app) 👈🏻
 
 ### Developed by [Ihor Kutsenko](https://github.com/iniacor/)
