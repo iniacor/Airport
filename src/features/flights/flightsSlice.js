@@ -26,11 +26,6 @@ const flightsSlice = createSlice({
     fetchStatus: null,
     error: null,
   },
-  // reducers: {
-  //   showFlightsList(state, action) {
-  //     state.flightsList.push(action.payload);
-  //   },
-  // },
   extraReducers: {
     [fetchFlightsList.pending]: state => {
       state.fetchStatus = 'loading';
@@ -46,4 +41,3 @@ const flightsSlice = createSlice({
   },
 });
 export default flightsSlice.reducer;
-// export const { showFlightsList } = flightsSlice.actions;

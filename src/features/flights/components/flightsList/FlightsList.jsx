@@ -11,7 +11,6 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
 
   const { flightsList, fetchStatus, error } = useSelector(state => state.flights);
   const dispatch = useDispatch();
-  console.log(flightsList);
 
   const extractFlightsList = (flightsList, flightDirection) => {
     return flightsList.map(flight => {
@@ -56,7 +55,6 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
         new Date(curentDate.timeTakeofFact || curentDate.timeStandFact).getDate() ===
         currentSearchDate,
     );
-    console.log(choseCorrectDate);
     return choseCorrectDate;
   };
 
