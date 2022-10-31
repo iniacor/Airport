@@ -2,6 +2,8 @@
 
 ### _React-powered application for visualisation flights data_
 
+### Application available via [link](https://unrivaled-quokka-7e8f73.netlify.app) 👈🏻
+
 ## ✨ Features
 
 - Search flight by airline, destionation or flight code
@@ -43,6 +45,5 @@ Airport board requires [NodeJS](https://nodejs.org/) v16+ to build
 
 <hr/>
 
-### Application available via [link](https://unrivaled-quokka-7e8f73.netlify.app) 👈🏻
 
 ### Developed by [Ihor Kutsenko](https://github.com/iniacor/)
