@@ -1,4 +1,4 @@
-# ✈️Airport search board project
+# ✈️ Airport search board project
 
 ### _React-powered application for visualisation flights data_
 
