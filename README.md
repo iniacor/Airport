@@ -2,11 +2,11 @@
 
 ### _React-powered application for visualisation flights data_
 
-## ✨Features
+## ✨ Features
 
 - Search flight by airline, destionation or flight code
 
-## ⚙️Used technologies:
+## ⚙️ Used technologies:
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS)
