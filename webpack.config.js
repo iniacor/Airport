@@ -43,7 +43,7 @@ module.exports = (env, argv) => {
       }),
       new CopyPlugin({
         patterns: [
-          { from: '_redirects', to: '' },
+          { from: '_redirects', to: '', noErrorOnMissing: true },
           { from: 'src/icons', to: 'dist/src/icons' },
         ],
       }),
