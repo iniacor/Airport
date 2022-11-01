@@ -1,12 +1,4 @@
-.logo-company {
-  display: flex;
-  align-items: center;
-
-  & img {
-    height: 30px;
-    margin-right: 15px;
-  }
-}
+@import '../../../../styles/vars.scss';
 
 .terminal {
   display: flex;
@@ -18,11 +10,25 @@
   font-size: 22px;
   font-weight: 700;
   border-radius: 50%;
-  border: 1px solid #63c745;
-  color: #63c745;
+  border: 1px solid $terminal-color-green;
+  color: $terminal-color-green;
 
   &.blue {
-    border-color: deepskyblue;
-    color: deepskyblue;
+    border-color: $terminal-color-blue;
+    color: $terminal-color-blue;
+  }
+}
+
+.airline {
+  display: flex;
+  align-items: center;
+  padding-left: 60px;
+  line-height: 18px;
+  font-size: 16px;
+
+  &__logo {
+    width: 63px;
+    height: 38px;
+    margin-right: 7px;
   }
 }

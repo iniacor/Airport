@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, NavLink, Navigate, useLocation, useSearchParams } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  Navigate,
+  useLocation,
+  useSearchParams,
+  useNavigate,
+} from 'react-router-dom';
 import moment from 'moment/moment';
 import FlightsList from '../flightsList/FlightsList';
-import Departure from '../../../../icons/Departure.svg';
-import Arrivals from '../../../../icons/Arrivals.svg';
 import './flight-board.scss';
+import TypeSwitchers from '../typeSwitcher/TypeSwitchers';
 
 const FlightBoard = () => {
   const [status, setStatus] = useState('departures');
   const location = useLocation();
-  const departureClass = status === 'departures' ? 'flightboard__link_active' : '';
-  const arrivalClass = status === 'arrivals' ? 'flightboard__link_active' : '';
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentDay = moment(Date.now()).format('DD/MM');
   const nextDay = moment(Date.now()).add(1, 'day').format('DD/MM');
   const prevDay = moment(Date.now()).subtract(1, 'day').format('DD/MM');
+
   const yesterday = moment(Date.now()).subtract(1, 'day').format('YYYY-MM-DD');
   const today = moment(Date.now()).format('YYYY-MM-DD');
   const tomorrow = moment(Date.now()).add(1, 'day').format('YYYY-MM-DD');
@@ -23,6 +29,7 @@ const FlightBoard = () => {
   const searchText = searchParams.get('search') || '';
   const date = searchParams.get('date') || '';
   const searchCalendarDate = moment(date).format('DD/MM');
+  const startDate = moment(new Date(), 'DD-MM-YYYY').format('YYYY-MM-DD');
 
   useEffect(() => {
     if (location.pathname.includes('arrivals')) {
@@ -30,7 +37,8 @@ const FlightBoard = () => {
     } else {
       setStatus('departures');
     }
-  }, [location]);
+    navigate(`${status}?date=${startDate}`);
+  }, []);
 
   const calendarHandler = event => {
     if (event.target.value === '') {
@@ -53,25 +61,7 @@ const FlightBoard = () => {
 
   return (
     <div className="flightboard">
-      <div className="type-switchers">
-        <NavLink
-          to={`/departures${location.search}`}
-          className="type-switchers__link"
-          activeClassName="active"
-        >
-          <Departure className="type-switchers__link-icon" />
-          Departures
-        </NavLink>
-        <NavLink
-          to={`/arrivals${location.search}`}
-          className="type-switchers__link type-switchers__link_arrivals"
-          activeClassName="active"
-        >
-          <Arrivals className="type-switchers__link-icon" />
-          Arrivals
-        </NavLink>
-      </div>
-
+      <TypeSwitchers searchPath={location.search} />
       <div className="flightboard__calendar">
         <div className="flightboard__calendar-date">
           <label htmlFor="search-date">{searchCalendarDate}</label>

@@ -1,0 +1,47 @@
+@import '../../../../styles/vars.scss';
+
+.type-switchers {
+  display: flex;
+  margin: auto 0;
+  color: $bg-color-white;
+
+  &__link {
+    flex: 1;
+    border-radius: 60px 60px 0 0;
+    line-height: 60px;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background-color: $bg-color-blue;
+    color: $text-color-white;
+    overflow: hidden;
+
+    &:hover {
+      background-color: $bg-darkblue-color;
+    }
+    &:active {
+      box-shadow: 1px 20px 36px -7px rgb(0 0 0 / 34%);
+    }
+
+    &_arrivals {
+      margin-left: -100px;
+    }
+  }
+
+  &__link-icon {
+    transform: translate(-15px, 13px);
+  }
+}
+
+.active {
+  z-index: 1;
+  background-color: $bg-color-white;
+  color: $text-darkblue-color;
+  box-shadow: 1px 20px 36px -7px rgb(0 0 0 / 34%);
+
+  &:hover {
+    background-color: $bg-color-white;
+  }
+}

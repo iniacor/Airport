@@ -1,13 +1,16 @@
 @import '../../../../styles/vars.scss';
 
 .flightboard {
+  width: 1120px;
+  font-size: 18px;
+
   &__calendar {
     display: flex;
     padding-top: 25px;
     padding-left: 12px;
     padding-bottom: 10px;
     align-items: center;
-    background-color: #fff;
+    background-color: $bg-color-white;
   }
 
   &__calendar-dates {
@@ -23,7 +26,7 @@
     position: relative;
     margin-left: 20px;
     width: 40px;
-    color: #1eb7ee;
+    color: $text-darkblue-color;
     text-align: center;
     & label {
       font-size: 12px;
@@ -33,8 +36,8 @@
       padding: 4px;
       width: 40px;
       height: 40px;
-      background-color: #1eb7ee;
-      color: #fff;
+      background-color: $bg-darkblue-color;
+      color: $text-color-white;
 
       i {
         font-size: 32px;
@@ -55,51 +58,6 @@
   }
 }
 
-// switcher style start
-.type-switchers {
-  display: flex;
-  margin: 35px auto 0;
-  color: $white-color;
-
-  &__link {
-    flex: 1;
-    height: 60px;
-    border-radius: 60px 60px 0 0;
-    line-height: 60px;
-    font-size: 24px;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-align: center;
-    text-decoration: none;
-    background-color: $blue-color;
-    color: $white-color;
-    overflow: hidden;
-    transition: 0.4s;
-
-    &:hover {
-      background-color: $dark-blue-color;
-    }
-
-    &_arrivals {
-      margin-left: -100px;
-    }
-  }
-
-  &__link-icon {
-    transform: translate(-15px, 11px);
-  }
-}
-
-.active {
-  z-index: 1;
-  background-color: $white-color;
-  color: $dark-blue-color;
-
-  &:hover {
-    background-color: $white-color;
-  }
-}
-
 .three-days {
   display: flex;
   justify-content: space-between;
@@ -113,12 +71,12 @@
 .date {
   padding-bottom: 5px;
   flex: 1;
-  color: #b8b9b9;
+  color: $text-color-secondary;
   border-bottom: 3px solid #d0d0d0;
   cursor: pointer;
   &_active {
     color: #1eb7ee;
-    border-bottom: 3px solid #1eb7ee;
+    border-bottom: 3px solid $border-darkblue-color;
     transition: 0.5s;
   }
   &__num {
