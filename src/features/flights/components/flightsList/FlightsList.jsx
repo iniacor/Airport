@@ -22,12 +22,14 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
         status: `Departed at ${moment(flight.timeTakeofFact).format('HH:mm')}`,
         name: flight.airline.en.name,
         logoUrl: flight.airline.en.logoSmallName,
+        id: flight.ID,
       };
       if (flightDirection === 'arrivals') {
         flightData = {
           ...flightData,
           status: `Landed at ${moment(flight.timeStandFact).format('HH:mm')}`,
           localTime: moment(flight.timeStandCalc).format('HH:mm'),
+          id: flight.ID,
         };
       }
       return <Flight key={flight.ID} {...flightData} />;

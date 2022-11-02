@@ -1,33 +1,50 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './flight.scss';
 
 const Flight = props => {
-  const { term, fltNo, status, name, logoUrl, airportName, localTime } = props;
+  const { term, fltNo, status, name, logoUrl, airportName, localTime, id } = props;
+  const location = useLocation();
 
   return (
     <tr className="table__body-row">
-      <td>
+      <td className="terminal-field ">
         <span className={term === 'D' ? 'terminal blue' : 'terminal'}>{term}</span>
       </td>
-      <td>{localTime}</td>
-      <td>
+      <td className="time-field">{localTime}</td>
+      <td className="way-field">
         <span>{airportName}</span>
       </td>
-      <td>
+      <td className="terminal-field mobile-only  ">
+        <span className={term === 'D' ? 'terminal blue' : 'terminal'}>{term}</span>
+      </td>
+      <td className="status-field">
         <span>{status}</span>
       </td>
-      <td>
+      <td className="company-name">
         <div className="airline">
           <img className="airline__logo" src={logoUrl} alt={name} />
           <span>{name}</span>
         </div>
       </td>
-      <td>
+      <td className="flight-field">
         <span>{`${fltNo}`}</span>
       </td>
-      <td>
-        <span>Flight details</span>
+      <td className="mobile-only company-name">
+        <div className="airline">
+          <img className="airline__logo" src={logoUrl} alt={name} />
+          <span>{name}</span>
+        </div>
+      </td>
+      <td className="details-field">
+        <Link
+          to={`${location.pathname}/${id}${location.search}`}
+          className="details-field__link"
+          role="link"
+        >
+          <span>Flight details</span>
+        </Link>
       </td>
     </tr>
   );

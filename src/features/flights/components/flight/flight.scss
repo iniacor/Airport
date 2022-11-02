@@ -1,17 +1,26 @@
 @import '../../../../styles/vars.scss';
+@import '../../../../styles/breakpoints.scss';
 
+.terminal-field {
+  display: none;
+  @include for-large-up {
+    display: table-cell;
+  }
+}
 .terminal {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
   width: 40px;
-  margin: auto;
   font-size: 22px;
   font-weight: 700;
   border-radius: 50%;
   border: 1px solid $terminal-color-green;
   color: $terminal-color-green;
+  @include for-large-up {
+    margin: auto;
+  }
 
   &.blue {
     border-color: $terminal-color-blue;
@@ -19,16 +28,96 @@
   }
 }
 
+.time-field {
+  width: 30%;
+  @include for-large-up {
+    width: auto;
+  }
+}
+
+.way-field {
+  width: 50%;
+  @include for-large-up {
+    width: auto;
+  }
+}
+
+.mobile-only {
+  width: 30%;
+  @include for-large-up {
+    display: none;
+  }
+}
+
+.status-field {
+  width: 50%;
+  @include for-large-up {
+    width: auto;
+  }
+}
+
+.company-name {
+  display: none;
+  @include for-large-up {
+    display: table-cell;
+  }
+}
+
 .airline {
   display: flex;
   align-items: center;
-  padding-left: 60px;
+  padding-left: 0;
   line-height: 18px;
   font-size: 16px;
+  @include for-large-up {
+    padding-left: 60px;
+  }
 
   &__logo {
     width: 63px;
     height: 38px;
     margin-right: 7px;
+  }
+}
+
+.flight-field {
+  width: 30%;
+  color: $text-color-secondary;
+  @include for-large-up {
+    width: auto;
+    color: $text-color-primary;
+  }
+}
+.terminal-field.mobile-only {
+  display: table-cell;
+  @include for-large-up {
+    display: none;
+  }
+}
+
+.mobile-only.company-name {
+  display: table-cell;
+  width: 50%;
+  @include for-large-up {
+    display: none;
+  }
+}
+
+.details-field {
+  display: inline-block;
+  position: absolute;
+  font-size: 0;
+  right: 0;
+  width: 70px;
+  padding: 0 !important;
+  height: 100%;
+  margin-top: -5px;
+  @include for-large-up {
+    position: static;
+    display: table-cell;
+    width: auto;
+  }
+  &__link {
+    color: $text-darkblue-color;
   }
 }

@@ -1,4 +1,5 @@
 @import '../../../../styles/vars.scss';
+@import '../../../../styles/breakpoints.scss';
 
 .flights-table {
   background-color: $bg-color-white;
@@ -10,6 +11,10 @@
 
   &__head {
     color: $text-color-secondary;
+    display: none;
+    @include for-large-up {
+      display: table-header-group;
+    }
   }
 
   &__head-row {
@@ -22,6 +27,10 @@
   }
 
   &__body-row {
+    position: relative;
+    @include for-large-up {
+      position: static;
+    }
     &:nth-of-type(odd) {
       background-color: $bgcolor-table-row-odd;
       transition: 0.3s;
@@ -33,9 +42,15 @@
   }
 
   td {
-    padding: 16px 10px;
-    text-align: center;
+    padding: 5px;
+    text-align: left;
     font-size: 18px;
+    line-height: 40px;
+    @include for-large-up {
+      padding: 16px 10px;
+      text-align: center;
+      line-height: 20px;
+    }
   }
 
   td:last-child {
