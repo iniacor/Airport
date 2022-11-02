@@ -1,17 +1,28 @@
 @import '../../../../styles/vars.scss';
+@import '../../../../styles/breakpoints.scss';
 
 .header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: 50px;
   z-index: 99;
   background: $bg-darkblue-color;
   color: $text-color-white;
   box-shadow: 0 5px 10px rgba(37, 40, 41, 0.3);
+  @include for-large-up {
+    height: 90px;
+  }
 }
 
 .logo-link__img {
-  margin: 5px 50px;
+  margin-left: 20px;
+  width: 110px;
+  height: 50px;
   cursor: pointer;
+  @include for-large-up {
+    margin-left: 100px;
+    width: 172px;
+    height: 85px;
+  }
 }

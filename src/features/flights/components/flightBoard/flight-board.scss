@@ -1,16 +1,23 @@
 @import '../../../../styles/vars.scss';
+@import '../../../../styles/breakpoints.scss';
 
 .flightboard {
-  width: 1120px;
+  width: 100%;
+  padding: 0 5px;
   font-size: 18px;
 
   &__calendar {
     display: flex;
     padding-top: 25px;
-    padding-left: 12px;
+    padding-left: 0;
+    padding-right: 25px;
     padding-bottom: 10px;
     align-items: center;
     background-color: $bg-color-white;
+    @include for-large-up {
+      padding-left: 12px;
+      padding-right: 0;
+    }
   }
 
   &__calendar-dates {
@@ -53,6 +60,15 @@
         opacity: 0;
         font-size: 32px;
         cursor: pointer;
+        &:hover {
+          border: 1px solid darkblue;
+        }
+        &:focus {
+          border: 1px solid darkblue;
+        }
+        &:active {
+          border: 1px solid darkblue;
+        }
       }
     }
   }

@@ -13,9 +13,10 @@ const TypeSwitchers = ({ searchPath }) => {
         className={({ isActive }) =>
           isActive ? 'type-switchers__link active' : 'type-switchers__link'
         }
+        role="link"
       >
         <Departure className="type-switchers__link-icon" />
-        <span className="type-switchers__link-text">Departures</span>
+        <span className="type-switchers__link-text_dep">Departures</span>
       </NavLink>
       <NavLink
         to={`/arrivals${searchPath}`}
@@ -24,6 +25,7 @@ const TypeSwitchers = ({ searchPath }) => {
             ? 'type-switchers__link active type-switchers__link_arrivals'
             : 'type-switchers__link type-switchers__link_arrivals'
         }
+        role="link"
       >
         <Arrivals className="type-switchers__link-icon" />
         <span className="type-switchers__link-text">Arrivals</span>

@@ -69,6 +69,7 @@ const FlightBoard = () => {
             <i className="fas fa-calendar-days"></i>
             <form className="event-form">
               <input
+                role="textbox"
                 type="date"
                 className="flightboard__calendar-input"
                 name="calendar"
@@ -80,6 +81,8 @@ const FlightBoard = () => {
         </div>
         <div className="three-days">
           <div
+            aria-label="choose yesterday date schedule"
+            role="generic"
             className={date === yesterday ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={yesterday}
@@ -88,6 +91,8 @@ const FlightBoard = () => {
             <div className="date__title">Yesterday</div>
           </div>
           <div
+            aria-label="choose today schedule"
+            role="generic"
             className={date === today ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={today}
@@ -96,6 +101,8 @@ const FlightBoard = () => {
             <div className="date__title">Today</div>
           </div>
           <div
+            aria-label="choose tomorrow schedule"
+            role="generic"
             className={date === tomorrow ? 'date date_active' : 'date'}
             onClick={onDayPicker}
             data-date={tomorrow}

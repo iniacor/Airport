@@ -39,6 +39,7 @@ const SearchFlightField = () => {
         <i className="fas fa-search"></i>
         <input
           className="search-action__input"
+          role="textbox"
           type="text"
           value={value}
           onChange={onChange}
