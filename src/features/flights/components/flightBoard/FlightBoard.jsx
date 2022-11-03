@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Route,
-  Routes,
-  Navigate,
-  useLocation,
-  useSearchParams,
-  useNavigate,
-} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Route, Routes, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import moment from 'moment/moment';
 import FlightsList from '../flightsList/FlightsList';
 import './flight-board.scss';
@@ -15,7 +9,6 @@ import TypeSwitchers from '../typeSwitcher/TypeSwitchers';
 const FlightBoard = () => {
   const [status, setStatus] = useState('departures');
   const location = useLocation();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentDay = moment(Date.now()).format('DD/MM');
@@ -29,7 +22,8 @@ const FlightBoard = () => {
   const searchText = searchParams.get('search') || '';
   const date = searchParams.get('date') || '';
   const searchCalendarDate = moment(date).format('DD/MM');
-  const startDate = moment(new Date(), 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+  const getCurrentDate = () => moment(new Date(), 'DD-MM-YYYY').format('YYYY-MM-DD');
 
   useEffect(() => {
     if (location.pathname.includes('arrivals')) {
@@ -37,8 +31,7 @@ const FlightBoard = () => {
     } else {
       setStatus('departures');
     }
-    navigate(`${status}?date=${startDate}`);
-  }, []);
+  }, [location]);
 
   const calendarHandler = event => {
     if (event.target.value === '') {
@@ -113,7 +106,7 @@ const FlightBoard = () => {
         </div>
       </div>
       <Routes>
-        <Route path="/" element={<Navigate to={`departures${location.search}`} replace />} />
+        <Route path="/" element={<Navigate to={`departures?date=${getCurrentDate()}`} replace />} />
         <Route
           path={location.pathname}
           element={

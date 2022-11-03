@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchFlightsList } from '../../flightsSlice';
-import './flights-list.scss';
 import Flight from '../flight/Flight';
+import './flights-list.scss';
 
 const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   const currentSearchDate = new Date(calendarDate).getDate();
