@@ -30,6 +30,7 @@ const SearchFlightField = () => {
     }
     const queryString = qs.stringify(dataQuery);
     navigate(`${pathname}${queryString}`);
+    setValue('');
   };
 
   return (
