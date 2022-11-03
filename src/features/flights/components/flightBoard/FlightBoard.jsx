@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Route, Routes, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import moment from 'moment/moment';
+import TypeSwitchers from '../typeSwitcher/TypeSwitchers';
 import FlightsList from '../flightsList/FlightsList';
 import './flight-board.scss';
-import TypeSwitchers from '../typeSwitcher/TypeSwitchers';
 
 const FlightBoard = () => {
   const [status, setStatus] = useState('departures');
-  const location = useLocation();
+  const { search, pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentDay = moment(Date.now()).format('DD/MM');
@@ -54,7 +53,7 @@ const FlightBoard = () => {
 
   return (
     <div className="flightboard">
-      <TypeSwitchers searchPath={location.search} />
+      <TypeSwitchers searchPath={search} />
       <div className="flightboard__calendar">
         <div className="flightboard__calendar-date">
           <label htmlFor="search-date">{searchCalendarDate}</label>
@@ -113,7 +112,7 @@ const FlightBoard = () => {
             <FlightsList
               calendarDate={date}
               searchText={searchText}
-              pathname={location.pathname}
+              pathname={pathname}
               status={status}
             />
           }
