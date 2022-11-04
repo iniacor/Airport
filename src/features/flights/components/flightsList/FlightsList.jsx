@@ -115,4 +115,4 @@ FlightsList.defaultProps = {
   flightsList: null,
 };
 
-export default FlightsList;
+export default React.memo(FlightsList);
