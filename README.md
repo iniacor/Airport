@@ -26,8 +26,8 @@
 - [Prettier](https://prettier.io/)
 
 ## Installation
-You can run this project locally just do:
-clone branch ```master``` with  ```git clone https://github.com/iniacor/Airport.git``` or fork it and then clone it from your forked repo
+You can run this project locally just do: sh
+clone branch ```sh master ``` with  ```sh git clone https://github.com/iniacor/Airport.git ``` or fork it and then clone it from your forked repo
 Move to the folder, install all dependencies and run the server:
 
 ```sh
