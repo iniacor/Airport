@@ -40,6 +40,7 @@ const Flight = props => {
       <td className="details-field">
         <Link
           to={`${location.pathname}/${id}${location.search}`}
+          // to={`${location.pathname}${location.search}/${id}`}
           className="details-field__link"
           role="link"
         >
