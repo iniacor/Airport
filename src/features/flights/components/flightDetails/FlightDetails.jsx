@@ -2,6 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import './flight-details.scss';
+// import { Outlet } from 'react-router-dom';
 
 const FlightDetails = () => {
   return (

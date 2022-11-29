@@ -32,7 +32,7 @@ const FlightBoard = () => {
       <Routes>
         <Route path="/" element={<Navigate to={`departures?date=${getCurrentDate()}`} replace />} />
         <Route
-          path={location.pathname}
+          path="/departures"
           element={
             <FlightsList
               calendarDate={date}
@@ -41,8 +41,23 @@ const FlightBoard = () => {
               status={status}
             />
           }
-        />
-        <Route path={`${location.pathname}/:id${location.search}`} element={<FlightDetails />} />
+        >
+          <Route path=":id" element={<FlightDetails />} />
+        </Route>
+        <Route
+          path="/arrivals"
+          element={
+            <FlightsList
+              calendarDate={date}
+              searchText={searchText}
+              pathname={pathname}
+              status={status}
+            />
+          }
+        >
+          <Route path=":id" element={<FlightDetails />} />
+          {/* <Route path={`${location.pathname}/:id${location.search}`} element={<FlightDetails />} /> */}
+        </Route>
       </Routes>
     </div>
   );

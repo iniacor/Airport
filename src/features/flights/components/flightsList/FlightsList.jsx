@@ -9,7 +9,6 @@ import './flights-list.scss';
 
 const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   const currentSearchDate = new Date(calendarDate).getDate();
-
   const { flightsList, fetchStatus, error } = useSelector(state => state.flights);
   const dispatch = useDispatch();
 
