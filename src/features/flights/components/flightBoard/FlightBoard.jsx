@@ -4,7 +4,6 @@ import moment from 'moment/moment';
 import TypeSwitchers from '../typeSwitcher/TypeSwitchers';
 import DatePicker from '../datePicker/DatePicker';
 import FlightsList from '../flightsList/FlightsList';
-import FlightDetails from '../flightDetails/FlightDetails';
 import './flight-board.scss';
 
 const FlightBoard = () => {
@@ -41,9 +40,7 @@ const FlightBoard = () => {
               status={status}
             />
           }
-        >
-          <Route path=":id" element={<FlightDetails />} />
-        </Route>
+        ></Route>
         <Route
           path="/arrivals"
           element={
@@ -54,10 +51,7 @@ const FlightBoard = () => {
               status={status}
             />
           }
-        >
-          <Route path=":id" element={<FlightDetails />} />
-          {/* <Route path={`${location.pathname}/:id${location.search}`} element={<FlightDetails />} /> */}
-        </Route>
+        ></Route>
       </Routes>
     </div>
   );

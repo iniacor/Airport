@@ -1,4 +1,4 @@
-export const getUniqueFlightsList = (arr, currentSearchDate) => {
+const getUniqueFlightsList = (arr, currentSearchDate) => {
   const withoutDuplicates = arr.reduce(
     (acc, el) => (acc.find(({ fltNo }) => el.fltNo === fltNo) || acc.push(el), acc),
     [],

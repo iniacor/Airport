@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { fetchFlightsList } from '../../flightsSlice';
-import { filterFlightsList } from '../../../../utils/utils';
+// import { filterFlightsList } from '../../../../utils/utils';
 import Flight from '../flight/Flight';
 import './flights-list.scss';
 
@@ -46,7 +46,39 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
   const { body } = flightsList;
   const path = pathname.slice(1, -1);
 
-  const flightsForRender = filterFlightsList(body[`${path}`], searchText, currentSearchDate);
+  const getUniqueFlightsList = arr => {
+    const withoutDuplicates = arr.reduce(
+      (acc, el) => (acc.find(({ fltNo }) => el.fltNo === fltNo) || acc.push(el), acc),
+      [],
+    );
+
+    const choseCorrectDate = withoutDuplicates.filter(
+      curentDate =>
+        new Date(curentDate.timeTakeofFact || curentDate.timeStandFact).getDate() ===
+        currentSearchDate,
+    );
+    return choseCorrectDate;
+  };
+
+  const filterFlightsList = (flightsList, searchText) => {
+    if (!searchText) return getUniqueFlightsList(flightsList);
+
+    const searchFilterList = flightsList.filter(flight => {
+      const fltNo = `${flight['carrierID.IATA']}${flight.fltNo}`;
+      const airportName = `${flight['airportToID.name_en']} || ${flight['airportFromID.name_en']}`;
+      const airlineName = `${flight.airline.en.name}`;
+      return (
+        fltNo.toLowerCase().includes(searchText.toLowerCase()) ||
+        airportName.toLowerCase().includes(searchText.toLowerCase()) ||
+        airlineName.toLowerCase().includes(searchText.toLowerCase())
+      );
+    });
+    return getUniqueFlightsList(searchFilterList);
+  };
+
+  const flightsForRender = filterFlightsList(body[`${path}`], searchText);
+
+  // const flightsForRender = filterFlightsList(body[`${path}`], searchText, currentSearchDate);
 
   if (flightsForRender.length === 0) {
     return <div className="nothing-found-msg">No Flight</div>;
