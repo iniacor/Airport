@@ -2,7 +2,7 @@
 
 ### _React-powered application for visualisation flights data_
 
-### Application available via [link](https://unrivaled-quokka-7e8f73.netlify.app) 👈🏻
+### Application available via [link](https://kiyv-airport.netlify.app/) 👈🏻
 
 ## ✨ Features
 
