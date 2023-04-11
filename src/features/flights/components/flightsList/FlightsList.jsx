@@ -78,15 +78,12 @@ const FlightsList = ({ calendarDate, searchText, pathname, status }) => {
 
   const flightsForRender = filterFlightsList(body[`${path}`], searchText);
 
-  // const flightsForRender = filterFlightsList(body[`${path}`], searchText, currentSearchDate);
-
   if (flightsForRender.length === 0) {
     return <div className="nothing-found-msg">No Flight</div>;
   }
   return (
     <div className="flights-table">
       {fetchStatus === 'loading' && <span className="spinner"></span>}
-      {error && <div className="error-msg">An error ocured: {error}</div>}
       <table className="table">
         <thead className="table__head">
           <tr className="table__head-row">
