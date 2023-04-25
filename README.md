@@ -1,5 +1,7 @@
 # ✈️ Airport search board project
 
+Attention! After the start of the full-scale war, flights in Ukraine have been suspended. To view flight data, please select a date prior to February 23, 2022.
+
 ### _React-powered application for visualisation flights data_
 
 ### Application available via [link](https://kiyv-airport.netlify.app/) 👈🏻
